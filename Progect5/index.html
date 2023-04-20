@@ -18,7 +18,13 @@
       <form id="build-form">
         <button type="button" id="submit">Построить дерево</button>
       </form>
-  
+
+      <form name="publish">
+        <input type="text" name="message" placeholder="введите сообщение"/>
+        <input type="submit" value="отправить"/>
+      </form>
+      
+
       <script src="decision-tree.js"></script>
   <script>
 
@@ -48,6 +54,7 @@ const csvFile = document.getElementById("csvFile");
 
 let data1;
 let features1;
+var tree;
 
 function csvToArray(str, delimiter = ",") {
   // split the text into an array of lines
@@ -95,16 +102,37 @@ myForm.addEventListener("submit", function (e) {
   reader.readAsText(input);
 });
 
-
 document.querySelector("#submit").onclick = function(){
   // Построить дерево
-  var tree = buildTree(data1, features1);
-    // Пример использования дерева
-    var example = { age: "young", income: "high", student: "no", credit_rating: "fair" };
+    tree = buildTree(data1, features1);
+  console.log(tree);
+}
+
+document.forms.publish.onsubmit = function() {
+    var inputValues = this.message.value.split(",");
+    var example = {};
+    for (var i = 0; i < features.length; i++) {
+        example[features[i]] = inputValues[i];
+    }
+    console.log(example);
+    //var tree = buildTree(data1, features1);
     var result = predict(tree, example);
     console.log(tree);
     console.log(result);
-}
+
+    return false;
+};
+
+
+// document.querySelector("#submit2").onclick = function(){
+
+//     // Пример использования дерева
+//     var example = { age: "young", income: "high", student: "no", credit_rating: "fair" };
+//     var result = predict(tree, example);
+//     console.log(tree);
+//     console.log(result);
+// }
+
 
     // // Построить дерево
     // var tree = buildTree(data, features);
