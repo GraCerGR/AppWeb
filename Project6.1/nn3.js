@@ -79,10 +79,9 @@ predict(digit) {
         return sum + value * weights[index];
       }, 0);
     });
-  
     // выбираем выходное значение, соответствующее цифре с наибольшим значением
     const maxOutputIndex = outputs.indexOf(Math.max(...outputs));
-  
+    console.log(outputs);//Общее число 1 в ведённом числе для каждого числа веса
     // возвращаем строку с распознанной цифрой
     return String(maxOutputIndex);
   }

@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Лабиринт</title>
     <link href="style.css" rel="stylesheet" type = "text/css">
 </head>
 <body style="background-color: green;">
     <canvas id="canvas"></canvas>
-<script src="js/main3.js" type = "text/javascript">
+<script src="js/main4.js" type = "text/javascript">
+</script>
+<form name="publish">
+    <input type="text" name="n" placeholder="введите n"/>
+    <input type="button" value="Построить/очистить карту" onclick="handleSubmit()"/>
+</form>
+
+<script>
+    function handleSubmit() {
+        n = document.forms.publish.n.value;
+        //console.log(n);
+        buildMap(n)
+    }
 </script>
 </body>
 </html>

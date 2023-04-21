@@ -1,10 +1,11 @@
+function buildMap(n) {
+
+
 var
 canv = document.getElementById('canvas'),
 ctx = canv.getContext('2d');
-
-canv.width = 500;//window.innerWidth;//400;
-canv.height = 500;//window.innerHeight;//400;
-n=20;
+canv.width = 900;//window.innerWidth;//400;
+canv.height = 900;//window.innerHeight;//400;
 map = new Array();
 map.lenght = n;
 XBegin= -1;
@@ -270,20 +271,20 @@ Point1(A.length,"blue");*/
 
 
 const bfs = function(map, fromRow, fromColumn, toRow, toColumn) {
-    const pack = (row, column) => `${row}:${column}`;
+    const pack = (row, column) => `${row}:${column}`;// преобразование координаты ячеек в строку и обратно
     const unpack = cell => cell.split(':').map(x => parseInt(x, 10));
   
-    const visited = new Set();
-    const isValidNeighbour = function(row, column) {
-      if (row < 0 || row >= map.length) {
+    const visited = new Set();//содержит посещенные ячейки,
+    const isValidNeighbour = function(row, column) {//проверяет является ли соседняя ячейка допустимой для посещения.
+      if (row < 0 || row >= map.length) {//находится ли ячейка в пределах сетки map
         return false;
       }
   
-      if (column < 0 || column >= map[row].length) {
+      if (column < 0 || column >= map[row].length) {//является ли она уже посещенной
         return false;
       }
   
-      const cell = pack(row, column);
+      const cell = pack(row, column);//имеет ли значение 0.
       if (visited.has(cell)) {
         return false;
       }
@@ -291,18 +292,18 @@ const bfs = function(map, fromRow, fromColumn, toRow, toColumn) {
       return map[row][column] === 0;
     };
   
-    let step = new Map();
-    const initialCell = pack(fromRow, fromColumn);
+    let step = new Map();//содержит все достигнутые ячейки на каждом шаге
+    const initialCell = pack(fromRow, fromColumn);// исходная точка
     step.set(initialCell, [initialCell]);
     while (step.size > 0) {
-      const nextStep = new Map();
-      const tryAddCell = function(row, column, path) {
-        if (isValidNeighbour(row, column)) {
-          const cell = pack(row, column);
-          const newPath = [...path];
+      const nextStep = new Map();//одержит ячейки, достижимые на следующем шаге
+      const tryAddCell = function(row, column, path) {//проверяет, является ли соседняя ячейка с координатами row и column допустимой для посещения
+        if (isValidNeighbour(row, column)) {//Если ячейка свободна, то
+          const cell = pack(row, column);// объединяет координаты ячейки в строку вида "row:column"
+          const newPath = [...path];//копирует в newPath все элементы из массива path. path содержит все предыдущие ячейки, которые уже были пройдены + новая
           newPath.push(cell);
-          nextStep.set(cell, newPath);
-          visited.add(cell);
+          nextStep.set(cell, newPath);//добавляет новую ячейку и новый путь до нее. 
+          visited.add(cell);//Добавляем ей в посещённые
         }
       };
   // -------- Функция вывода ----
@@ -327,7 +328,7 @@ const bfs = function(map, fromRow, fromColumn, toRow, toColumn) {
             }
             return path;*/
 
-            let arr = new Array();;
+            let arr = new Array();
             for (let i = 1; i < path.length-1; i++) {
                 setTimeout(function() {
                     if (i != path.length) {
@@ -396,6 +397,7 @@ if(isEnterDown){
   document.write("<br>")
 }*/
 if(bfs(map, XBegin, YBegin, XEnd, YEnd)==null){
-    console.log("Выхода нет") 
+  alert("Выхода нет")
 }
 }})
+}

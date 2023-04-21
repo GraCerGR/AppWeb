@@ -33,7 +33,7 @@ function recognizeDigit() {
   const recognizer = new DigitRecognizer();
   const digit = pixels;
   const recognizedDigit = recognizer.predict(digit);
-  console.log(recognizedDigit); // выводит "1"
+  //console.log(recognizedDigit); // выводит "1"
   document.getElementById("digit").textContent = recognizedDigit;
 
 }
