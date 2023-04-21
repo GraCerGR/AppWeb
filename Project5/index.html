@@ -3,26 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Дерево решений</title>
-
+  <link href="../css.css" rel="stylesheet" type = "text/css">
 
 </head>
 <body>
-
+  <div class="div1">
+    <div class="exit">
+      <a href="../html.html" class="exit1">Назад</a>  
+    </div>
     <form id="myForm">
         <input type="file" id="csvFile" accept=".csv" />
-        <br />
         <input type="submit" value="Сохранить массив" />
       </form>
-
+      <br />
       <form id="build-form">
         <button type="button" id="submit">Построить дерево</button>
       </form>
-
+      <br>
       <form name="publish">
         <input type="text" name="message" placeholder="введите сообщение"/>
         <input type="submit" value="отправить"/>
       </form>
-      
+    </div>
 
       <script src="decision-tree.js"></script>
   <script>

@@ -4,8 +4,8 @@ function buildMap(n) {
 var
 canv = document.getElementById('canvas'),
 ctx = canv.getContext('2d');
-canv.width = 900;//window.innerWidth;//400;
-canv.height = 900;//window.innerHeight;//400;
+canv.width = 800;//window.innerWidth;//400;
+canv.height = 800;//window.innerHeight;//400;
 map = new Array();
 map.lenght = n;
 XBegin= -1;
@@ -386,16 +386,7 @@ const bfs = function(map, fromRow, fromColumn, toRow, toColumn) {
   document.addEventListener('keydown',function(e){
 if(isEnterDown){
     bfs(map, XBegin, YBegin, XEnd, YEnd);
-   // console.log(bfs(map, XBegin, YBegin, XEnd, YEnd)); 
-   // console.log(isEnterDown);
-   //console.log(YBegin, XBegin, YEnd, XEnd);
-   /* document.write("map:<br>")
-   for (var i=0; i<map.length; i++)
-{
-  for (var j=0; j<map[i].length; j++)
-    document.write(map[j][i]+" ")
-  document.write("<br>")
-}*/
+
 if(bfs(map, XBegin, YBegin, XEnd, YEnd)==null){
   alert("Выхода нет")
 }
